@@ -23,6 +23,27 @@ public class Main {
         }
        int escolha =Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo que você quer : \n"+ menu));
        
+       switch(escolha){
+           case 1:{
+               
+           }
+           case 2:{
+               
+           }
+           case 3:{
+               
+           }
+           case 4:{
+               
+           }
+           case 5:{
+               
+           }
+           default:{
+               
+           }
+       }
+       
     }
     
 }
