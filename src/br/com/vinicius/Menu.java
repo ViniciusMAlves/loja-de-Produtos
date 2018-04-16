@@ -5,11 +5,16 @@
  */
 package br.com.vinicius;
 
+import br.com.vinicius.objeto.Produto;
+import java.util.ArrayList;
+
 /**
  *
  * @author vinicius.132217
  */
 public enum Menu {
+   
+    
     cadastroCli(1," : Cadastrar Cliente"),
     cadastroProd(2," : Cadastrar Produto"),
     vendas(3," : vendas"),

@@ -12,24 +12,23 @@ import java.util.ArrayList;
  * @author vinicius.132217
  */
 public class Venda {
-    private Cliente nome;
+    private String nome;
     private ArrayList<Produto> produtos = new ArrayList<Produto>();
     private float totalPagar;
     private char status;
     private int id;
 
-    public Venda(Cliente nome, float totalPagar, char status, int id) {
+    public Venda(String nome, char status, int id) {
         this.nome = nome;
-        this.totalPagar = totalPagar;
         this.status = status;
         this.id = id;
     }
 
-    public Cliente getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(Cliente nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

@@ -61,7 +61,7 @@ public enum produto {
 
     @Override
     public String toString() {
-        return "produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", status=" + status + ", valor=" + valor + '}';
+        return " \n" + " id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", status=" + status + ", valor=" + valor +"\n" ;
     }
     
 }
