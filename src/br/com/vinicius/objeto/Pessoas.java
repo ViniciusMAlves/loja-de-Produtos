@@ -58,7 +58,7 @@ public abstract class Pessoas {
 
     @Override
     public String toString() {
-        return "Pessoas:" + "\n nome=" + nome + "\n rg=" + rg + "\n cpf=" + cpf + "\n dataNascimento=" + dataNascimento  ;
+        return "Pessoas:" + "\n nome =" + nome + "\n RG =" + rg + "\n CPF =" + cpf + "\n data de Nascimento =" + dataNascimento  ;
     }
 
     

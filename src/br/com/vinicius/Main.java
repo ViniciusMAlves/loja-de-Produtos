@@ -32,18 +32,19 @@ public class Main {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         for (produto p : produto.values()) {
-            produtos.add(new Produto(p.getId(), p.getNome(), p.getDescricao(), (int) p.getValor(), p.getStatus()));
+            produtos.add(new Produto(p.getId(), p.getNome(), p.getDescricao(), p.getStatus(), p.getValor()));
         }
 
+        String men = "";
+        for (Menu m : Menu.values()) {
+            men += m.toString();
+        }
+        int codi;
         do {
-            cod = Integer.parseInt(JOptionPane.showInputDialog("Escolha :"
-                    + "\n1 : Cadastrar Cliente  "
-                    + "\n2 : Cadastrar Produto "
-                    + "\n3 : Vendas  "
-                    + "\n4 : Consutar  "
-                    + "\n5 : Sair  "));
 
-            switch (cod) {
+            codi = Integer.parseInt(JOptionPane.showInputDialog(" " + men));
+
+            switch (codi) {
                 case 1: {
 
                     int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID de cliente :"));
@@ -64,10 +65,10 @@ public class Main {
                             pro += b.toString();
                         }
                         int p = Integer.parseInt(JOptionPane.showInputDialog(pro));
-                        
+
                         for (produto b : produto.values()) {
                             if (b.getId() == p) {
-                                 JOptionPane.showMessageDialog(null,"Você escolheu " + b.toString());
+                                JOptionPane.showMessageDialog(null, "Você escolheu " + b.toString());
                             }
                         }
 
@@ -75,33 +76,43 @@ public class Main {
                     break;
                 }
                 case 3: {
+                    String nomclente = "";
+                    for (Cliente clie : clientes) {
+                        nomclente += "\n" + clientes.indexOf(clie) + " : " + clie.getNome();
+                    }
+                    int nome =Integer.parseInt( JOptionPane.showInputDialog("Qual é o codigo do cliente :" + nomclente));
+                    Cliente nomecli=clientes.get(nome);
                     do {
-                        String nomclente = "";
-                        for (Cliente clie : clientes) {
-                            nomclente += "\n" + clientes.indexOf(clie) + " : " + clie.getNome();
-                        }
-                        String nome = JOptionPane.showInputDialog("Qual é o nome do cliente :" + nomclente);
                         char status = JOptionPane.showInputDialog("Qual é o Status do produto :").charAt(0);
                         String nomprod = "";
                         for (Produto prodi : produtos) {
                             nomprod += "\n" + produtos.indexOf(prodi) + " : " + prodi.getNome();
                         }
-                        
-                        int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID da venda :"+nomprod));
-                        vendas.add(new Venda(nome, status, id));
+
+                        int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID da venda :" + nomprod));
+                        vendas.add(new Venda(id, nomecli, status, status));
+
+                        vendas.get(vendas.size() - 1).getProdutos().add(produtos.get(id));
 
                     } while (JOptionPane.showConfirmDialog(null, "Deseja continuar ?") == 0);
+
                     break;
                 }
                 case 4: {
                     do {
                         int consu = Integer.parseInt(JOptionPane.showInputDialog("Qual você deseja consutar "
-                                + "\n1 : Cliente "
+                                + "\n1 : Clientes "
                                 + "\n2 : Vendas "
                         ));
                         switch (consu) {
                             case 1: {
-                                JOptionPane.showMessageDialog(null, clientes.toString());
+                                String nomcliente=" ";
+                                for (Cliente clie : clientes) {
+                                    nomcliente += "\n" + clientes.indexOf(clie) + " : " + clie.getNome();
+                                }
+                                int nomecon =Integer.parseInt( JOptionPane.showInputDialog("Qual é o codigo do seu nome :" + nomcliente));
+                                
+                                JOptionPane.showMessageDialog(null,clientes.get(nomecon));
 
                                 break;
                             }
@@ -126,22 +137,8 @@ public class Main {
                 }
 
             }
-        } while (cod != 5);
-        
-        
+        } while (codi != 5);
 
-        String menu = "";
-        for (Menu b : Menu.values()) {
-            menu += b.toString();
-        }
-        int escolha = Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo que você quer : \n" + menu));
-
-        /* int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID de cliente :"));
-                        String nome = JOptionPane.showInputDialog("Qual é o seu nome :");
-                        String descricao = JOptionPane.showInputDialog("Qual é a descrição :");
-                        int valor = Integer.parseInt(JOptionPane.showInputDialog("Qual é o valor do produto :"));
-                        char status = JOptionPane.showInputDialog("Qual é o seu Status :").charAt(0);
-                        prod.add(new Produto(id, nome, descricao, valor, status));*/
     }
 
 }

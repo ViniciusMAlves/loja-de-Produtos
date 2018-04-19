@@ -13,15 +13,15 @@ public class Produto {
     private int id;
     private String nome;
     private String descricao;
-    private int valor;
     private char status;
+    private float valor;
 
-    public Produto(int id, String nome, String descriaoo, int valor, char status) {
+    public Produto(int id, String nome, String descricao, char status, float valor) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.valor = valor;
         this.status = status;
+        this.valor = valor;
     }
 
     public int getId() {
@@ -40,20 +40,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getDescrição() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descricao = descrição;
-    }
-
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public char getStatus() {
@@ -64,9 +56,20 @@ public class Produto {
         this.status = status;
     }
 
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+    
+
+    
+
     @Override
     public String toString() {
-        return "Produto :" + "\n id=" + id + "\n nome=" + nome + "\n descrição=" + descricao + "\n valor=" + valor + "\n status=" + status ;
+        return "Produto :" + "\n id=" + id + "\n nome=" + nome + "\n descrição=" + descricao + "\n valor=" + valor + "\n status=" + status+"\n" ;
     }
     
     

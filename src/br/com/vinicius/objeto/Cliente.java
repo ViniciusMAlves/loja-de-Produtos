@@ -83,7 +83,7 @@ public class Cliente extends Pessoas{
 
     @Override
     public String toString() {
-        return super.toString()+"Cliente :" + "\nid=" + id + "\n dataCadastro=" + dataCadastro + "\n status=" + status + "\n idade=" + idade +"\n";
+        return super.toString()+"Cliente :" + "\nid =" + id + "\n data de Cadastro =" + dataCadastro + "\n status =" + status + "\n idade =" + idade +"\n";
     }
     
     

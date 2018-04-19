@@ -12,25 +12,28 @@ import java.util.ArrayList;
  * @author vinicius.132217
  */
 public class Venda {
-    private String nome;
     private ArrayList<Produto> produtos = new ArrayList<Produto>();
-    private float totalPagar;
-    private char status;
     private int id;
+    private Cliente nomecli;
+    private char status;
+    private float totalPagar;
 
-    public Venda(String nome, char status, int id) {
-        this.nome = nome;
-        this.status = status;
+    public Venda(int id, Cliente nomecli, char status, float totalPagar) {
         this.id = id;
+        this.nomecli = nomecli;
+        this.status = status;
+        this.totalPagar = totalPagar;
     }
 
-    public String getNome() {
-        return nome;
+    public Cliente getNomecli() {
+        return nomecli;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomecli(Cliente nomecli) {
+        this.nomecli = nomecli;
     }
+
+   
 
     public ArrayList<Produto> getProdutos() {
         return produtos;
@@ -63,11 +66,17 @@ public class Venda {
     public void setId(int id) {
         this.id = id;
     }
+    
+   
 
     @Override
     public String toString() {
-        return "Venda :" + "\n nome=" + nome + "\n produtos=" + produtos + "\n totalPagar=" + totalPagar + "\n status=" + status + "\n id=" + id  ;
+        
+       
+        return " Venda :" + "\n nome=" + nomecli + "\n produtos=" + produtos + "\n total a Pagar=" + totalPagar + "\n status=" + status + "\n ID=" + id+"\n "  ;
+        
     }
+     
     
     
 }
