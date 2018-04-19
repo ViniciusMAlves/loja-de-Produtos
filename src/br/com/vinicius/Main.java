@@ -29,31 +29,31 @@ public class Main {
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Venda> vendas = new ArrayList<>();
         ArrayList<Produto> prod = new ArrayList<>();
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         for (produto p : produto.values()) {
             produtos.add(new Produto(p.getId(), p.getNome(), p.getDescricao(), (int) p.getValor(), p.getStatus()));
         }
-        
+
         do {
             cod = Integer.parseInt(JOptionPane.showInputDialog("Escolha :"
-                    + "\nCadastrar Cliente :1 "
-                    + "\nCadastrar Produto :2"
-                    + "\nVendas :3 "
-                    + "\nConsutar :4 "
-                    + "\nSair :5 "));
-            
+                    + "\n1 : Cadastrar Cliente  "
+                    + "\n2 : Cadastrar Produto "
+                    + "\n3 : Vendas  "
+                    + "\n4 : Consutar  "
+                    + "\n5 : Sair  "));
+
             switch (cod) {
                 case 1: {
-                    
+
                     int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID de cliente :"));
-                    Date dataCadastro = sdf.parse(JOptionPane.showInputDialog("Qual é a sua data de nascimento :"));
+                    Date dataCadastro = sdf.parse(JOptionPane.showInputDialog("Qual é a sua data de cadastro :"));
                     char status = JOptionPane.showInputDialog("Qual é o seu Status :").charAt(0);
                     String nome = JOptionPane.showInputDialog("Qual é o seu nome :");
                     String rg = JOptionPane.showInputDialog("Qual é o seu RG :");
                     String cpf = JOptionPane.showInputDialog("Qual é o seu CPF :");
                     Date dataNascimento = sdf.parse(JOptionPane.showInputDialog("Qual é a sua data de nascimento :"));
-                    
+
                     clientes.add(new Cliente(id, dataCadastro, status, nome, rg, cpf, dataNascimento));
                     break;
                 }
@@ -63,14 +63,14 @@ public class Main {
                         for (produto b : produto.values()) {
                             pro += b.toString();
                         }
-                        int escolha = Integer.parseInt(JOptionPane.showInputDialog(pro));
-                        String valEscolha;
+                        int p = Integer.parseInt(JOptionPane.showInputDialog(pro));
+                        
                         for (produto b : produto.values()) {
-                            if (b.getId() == escolha) {
-                                JOptionPane.showMessageDialog(null, "Você escolheu " + b.toString());
+                            if (b.getId() == p) {
+                                 JOptionPane.showMessageDialog(null,"Você escolheu " + b.toString());
                             }
                         }
-                        
+
                     } while (JOptionPane.showConfirmDialog(null, "Deseja continuar ?") == 0);
                     break;
                 }
@@ -82,43 +82,54 @@ public class Main {
                         }
                         String nome = JOptionPane.showInputDialog("Qual é o nome do cliente :" + nomclente);
                         char status = JOptionPane.showInputDialog("Qual é o Status do produto :").charAt(0);
-                        int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID da venda :"));
-                        vendas.add(new Venda(nome, status, id));
+                        String nomprod = "";
+                        for (Produto prodi : produtos) {
+                            nomprod += "\n" + produtos.indexOf(prodi) + " : " + prodi.getNome();
+                        }
                         
+                        int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID da venda :"+nomprod));
+                        vendas.add(new Venda(nome, status, id));
+
                     } while (JOptionPane.showConfirmDialog(null, "Deseja continuar ?") == 0);
                     break;
                 }
                 case 4: {
                     do {
                         int consu = Integer.parseInt(JOptionPane.showInputDialog("Qual você deseja consutar "
-                                + "\nCliente :1"
-                                + "\nVendas :2"
+                                + "\n1 : Cliente "
+                                + "\n2 : Vendas "
                         ));
                         switch (consu) {
                             case 1: {
-                                
+                                JOptionPane.showMessageDialog(null, clientes.toString());
+
                                 break;
                             }
                             case 2: {
-                                
+                                JOptionPane.showMessageDialog(null, vendas.toString());
                                 break;
                             }
                         }
-                        
+
                     } while (JOptionPane.showConfirmDialog(null, "Deseja continuar ?") == 0);
-                    
+
                     break;
                 }
                 case 5: {
-                    
+                    JOptionPane.showMessageDialog(null, "Tchal");
+                    break;
                 }
                 default: {
-                    
+                    JOptionPane.showMessageDialog(null, "codigo imcorreto!!!");
+                    break;
+
                 }
-                
+
             }
         } while (cod != 5);
         
+        
+
         String menu = "";
         for (Menu b : Menu.values()) {
             menu += b.toString();
@@ -132,5 +143,5 @@ public class Main {
                         char status = JOptionPane.showInputDialog("Qual é o seu Status :").charAt(0);
                         prod.add(new Produto(id, nome, descricao, valor, status));*/
     }
-    
+
 }
