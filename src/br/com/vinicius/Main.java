@@ -35,6 +35,7 @@ public class Main {
             produtos.add(new Produto(p.getId(), p.getNome(), p.getDescricao(), p.getStatus(), p.getValor()));
         }
 
+        float valor=0;
         String men = "";
         for (Menu m : Menu.values()) {
             men += m.toString();
@@ -58,30 +59,14 @@ public class Main {
                     clientes.add(new Cliente(id, dataCadastro, status, nome, rg, cpf, dataNascimento));
                     break;
                 }
+                
                 case 2: {
-                    do {
-                        String pro = "";
-                        for (produto b : produto.values()) {
-                            pro += b.toString();
-                        }
-                        int p = Integer.parseInt(JOptionPane.showInputDialog(pro));
-
-                        for (produto b : produto.values()) {
-                            if (b.getId() == p) {
-                                JOptionPane.showMessageDialog(null, "Você escolheu " + b.toString());
-                            }
-                        }
-
-                    } while (JOptionPane.showConfirmDialog(null, "Deseja continuar ?") == 0);
-                    break;
-                }
-                case 3: {
                     String nomclente = "";
                     for (Cliente clie : clientes) {
                         nomclente += "\n" + clientes.indexOf(clie) + " : " + clie.getNome();
                     }
-                    int nome =Integer.parseInt( JOptionPane.showInputDialog("Qual é o codigo do cliente :" + nomclente));
-                    Cliente nomecli=clientes.get(nome);
+                    int nome = Integer.parseInt(JOptionPane.showInputDialog("Qual é o codigo do cliente :" + nomclente));
+                    Cliente nomecli = clientes.get(nome);
                     do {
                         char status = JOptionPane.showInputDialog("Qual é o Status do produto :").charAt(0);
                         String nomprod = "";
@@ -90,15 +75,19 @@ public class Main {
                         }
 
                         int id = Integer.parseInt(JOptionPane.showInputDialog("Qual é o sue ID da venda :" + nomprod));
-                        vendas.add(new Venda(id, nomecli, status, status));
+
+                        valor =+ produtos.get(id).getValor();
+                        vendas.add(new Venda(id, nomecli, status, valor));
 
                         vendas.get(vendas.size() - 1).getProdutos().add(produtos.get(id));
+                        
+                         
 
                     } while (JOptionPane.showConfirmDialog(null, "Deseja continuar ?") == 0);
 
                     break;
                 }
-                case 4: {
+                case 3: {
                     do {
                         int consu = Integer.parseInt(JOptionPane.showInputDialog("Qual você deseja consutar "
                                 + "\n1 : Clientes "
@@ -106,18 +95,23 @@ public class Main {
                         ));
                         switch (consu) {
                             case 1: {
-                                String nomcliente=" ";
+                                String nomcliente = " ";
                                 for (Cliente clie : clientes) {
                                     nomcliente += "\n" + clientes.indexOf(clie) + " : " + clie.getNome();
                                 }
-                                int nomecon =Integer.parseInt( JOptionPane.showInputDialog("Qual é o codigo do seu nome :" + nomcliente));
-                                
-                                JOptionPane.showMessageDialog(null,clientes.get(nomecon));
+                                int nomecon = Integer.parseInt(JOptionPane.showInputDialog("Qual é o codigo do seu nome :" + nomcliente));
+
+                                JOptionPane.showMessageDialog(null, clientes.get(nomecon).toString() );
 
                                 break;
                             }
                             case 2: {
-                                JOptionPane.showMessageDialog(null, vendas.toString());
+                                String pro=" ";
+                                for (Venda p : vendas) {
+                                    pro += "\n" + vendas.indexOf(p) + "" +p.getProdutos();
+                                }
+                                int nomep = Integer.parseInt(JOptionPane.showInputDialog("Qual é o codigo do seu produto selecionado : " + pro));
+                                JOptionPane.showMessageDialog(null, vendas.get(nomep).toString());
                                 break;
                             }
                         }
@@ -126,7 +120,7 @@ public class Main {
 
                     break;
                 }
-                case 5: {
+                case 4: {
                     JOptionPane.showMessageDialog(null, "Tchal");
                     break;
                 }

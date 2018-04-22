@@ -16,10 +16,9 @@ public enum Menu {
    
     
     cadastroCli(1," : Cadastrar Cliente"),
-    cadastroProd(2," : Cadastrar Produto"),
-    vendas(3," : vendas"),
-    consuta(4," : Consutar"),
-    sair(5," : Sair");
+    vendas(2," : vendas"),
+    consuta(3," : Consutar"),
+    sair(4," : Sair");
     
      private int cod;
      private String nome;

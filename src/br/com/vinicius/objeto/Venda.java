@@ -25,6 +25,8 @@ public class Venda {
         this.totalPagar = totalPagar;
     }
 
+   
+
     public Cliente getNomecli() {
         return nomecli;
     }
